@@ -1,0 +1,91 @@
+   html {
+  background: url(../images/bg1.jpg) no-repeat center fixed ; 
+  background-size: cover;}
+    
+    h1{ 
+    font-size: 40px; 
+        text-align: center;
+        font-family: 'Dancing Script', cursive; 
+        color:#ff1493; 
+        padding-top:30px;
+        text-shadow: 1.5px 1.5px 1.5px rgba(255, 255, 255, 0.5);}
+
+    p{
+     font-size: 20px; 
+        color: #ff1493 ;
+        height: 20px; 
+        line-height: 0px;
+        text-align: center; 
+        font-family: 'Delius Swash Caps', cursive }
+    
+    body {
+    color: #FF1493;
+    font-family: 'Delius Swash Caps', cursive
+
+    } 
+    
+    select {
+        background: white;
+        color: deeppink;
+        width: 230px;
+        padding: 5px;
+        font-size: 13px;
+        line-height:1;
+        border: 0;
+        border-radius: 5;
+        height: 25px; 
+        float: left;}
+    
+    img {
+        position: relative;
+        width: 25vw;
+        height: 40vh;
+        padding:4px;
+        border:4px solid #FFFFFF;
+        background-color:#FFD3E0;
+        }
+
+    Button{
+        background: white;
+        color: deeppink;
+        font-size: 13px;
+        border:1px;
+        border-radius:5px;
+        height: 25px; 
+        cursor: pointer;
+        position:absolute;
+        left: 330px;
+        top: 250px;
+    }
+    
+
+        form{
+        background-color:#FFD3E0;
+        text-align:center;
+        border: 3px solid #FF1493;
+        width: 200px;
+        padding: 0px 50px 15px;
+        margin-top:40px;
+        box-shadow: 0 0 15px;
+        border-radius: 6px;
+        float:right;
+        }
+        #Receiptpage{
+    
+        background: url(../images/bg1.jpg) no-repeat center fixed ; 
+        background-size: cover;
+        }
+
+        textarea{
+        width: 700px;  
+        text-align:center;
+        font-family: 'Delius Swash Caps', cursive;
+        font-size: 20px;
+        background-color:#FFD3E0;
+        border: 3px solid #FF1493;
+        box-shadow: 0 0 20px;
+        position:absolute;
+        left: 300px;
+        top: 150px;
+        }
+

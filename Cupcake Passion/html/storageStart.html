@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Customer Order Confirmation</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="shortcut icon" href="../images/favicon.ico">
+	<script type="text/javascript" src="../javascript/cookies.js"></script>
+    <script type="text/javascript" src="../javascript/orderform.js"></script>
+	<script type="text/javascript">
+
+			function display(){
+             if(localStorage){
+                    var cupcake = document.createTextNode(localStorage.getItem('Cupcake'));
+                    var olduser = document.createTextNode(localStorage.getItem('username'));
+                    var oldemail = document.createTextNode(localStorage.getItem('email'));
+                 
+                 var ntext = document.createElement("TEXTAREA");
+                 var dtext = document.createTextNode('Welcome, '+localStorage.getItem('username')+'! This is your order: '+localStorage.getItem('Cupcake'));
+                 ntext.setAttribute('id',"texta");
+                 ntext.appendChild(dtext);
+                 document.body.appendChild(ntext);
+                 document.getElementById("texta").readOnly ="true";
+                 
+                }
+                
+             else{
+                   // document.write('<h2>Welcome, '+GetCookie('username')+'! This is your order'+GetCookie('Cupcake')+'</h2>'); 
+                    var cupcake = document.createTextNode(GetCookie('Cupcake'));
+                    var olduser = document.createTextNode(GetCookie('username'));
+                    var oldemail = document.createTextNode(GetCookie('email'));
+                 
+                 var ntext = document.createElement("TEXTAREA");
+                 var dtext = document.createTextNode('Welcome, '+GetCookie('username')+'! This is your order: '+GetCookie('Cupcake'));
+                 ntext.setAttribute('id',"texta");
+                 ntext.appendChild(dtext);
+                 document.body.appendChild(ntext);
+                 document.getElementById("texta").readOnly ="true";
+                
+                 }
+            }
+
+	</script>
+</head>
+<body onload="display()">
+    <h1>The Cupcake Passion</h1>
+<div id="Receiptpage" class="receiptpage" style="position:absolute;right:300px">
+	<p></p>
+</div>
+</body>
+</html>

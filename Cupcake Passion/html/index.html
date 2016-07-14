@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>The Cupcake Passion </title>
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <script src= "../javascript/data.js" type="text/javascript"></script>
+    <script src= "../javascript/orderform.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../javascript/cookies.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+<style>
+   
+    </style>
+</head>
+    <script>
+		tPosition = 0;
+        var count=1;
+        var displayName= new Array();
+//build function
+        function dynbuild(which){   
+        lPosition = 200;
+
+                if(which == 'init'){
+
+                    var hold=data[which];
+                    var cSelect = document.createElement("Select");
+                    cSelect.setAttribute('id',which);
+                    cSelect.setAttribute('style',"position:absolute; top:40px; left:"+lPosition+'px');
+                
+                for(var i=0;i<hold.length;i++){
+                var newOption = document.createElement("option"); 
+                newOption.value = hold[i];  
+                newOption.text = hold[i];   
+                cSelect.add(newOption);
+                cSelect.appendChild(newOption);  
+            }
+            
+            document.getElementById("Select").appendChild(cSelect);
+            moveIt(cSelect.getAttribute("id"),3,lPosition+80);
+            document.getElementById(which).onchange = function(){
+                document.getElementById("ImagesP").src = "../images/"+this.value+".jpg";
+                dynbuild(document.getElementById(which));
+            }      
+                }
+        
+            else{
+                    console.log("inside else");
+                    var hold=data[which.value];
+                    
+                    
+                    if(document.getElementsByTagName("form")[0]){
+                        fade(document.getElementsByTagName("form")[0]);
+                        setTimeout(function(){killForm();}, 1500);
+                    }
+                    
+                    
+                    while(which!=which.parentNode.lastChild){
+                    which.parentNode.removeChild(which.parentNode.lastChild);
+                 }
+                
+//check to kill children after me...
+//while(which!=which.parent.lastchild){kill lastchild}
+// undefined , which is no more selects
+                
+                if (hold==undefined){
+                    displayName =[];
+                    var AllSelects = document.getElementsByTagName("Select").length;
+                    console.log(AllSelects);
+                    for(i=0;i<AllSelects;i++){
+                        displayName[i] = document.getElementsByTagName("Select")[i].value;
+                        console.log(displayName);
+                        }
+                    //create submit button
+                    var newbutton = document.createElement("Button");
+                    var newtext = document.createTextNode("Submit the choice");
+                    newbutton.setAttribute('id','bbt');
+                    newbutton.appendChild(newtext);
+        
+                    document.getElementById("Select").appendChild(newbutton);
+                
+                        document.getElementById("bbt").onclick = function(){
+                            setCookie(displayName);
+                            if (!(document.getElementsByTagName("form")[0])) {
+                                     createForm();
+                            }
+                           else{
+                               return;
+                            }
+                         }   
+                            return;
+                        }
+                
+//check if first position in hold is NOT null
+//change the src of an image on the page
+            var cSelect = document.createElement("Select");
+            
+            cSelect.setAttribute('id',which.value);
+                tPosition = parseInt(document.getElementById("Select").lastChild.style.top)+40+"px";
+                cSelect.setAttribute('style',"position:absolute; top:"+tPosition+"; left:"+lPosition+'px');
+                
+            for(var i=0;i<hold.length;i++){
+                var newOption = document.createElement("option"); 
+                newOption.value = hold[i];  
+                newOption.text = hold[i]; 
+                cSelect.add(newOption);
+                cSelect.appendChild(newOption);  
+            }
+            document.getElementById("Select").appendChild(cSelect);
+                
+            moveIt(cSelect.getAttribute("id"),3,lPosition+80);
+            document.getElementById(which.value).onchange = function(){
+                document.getElementById("ImagesP").src = "../images/"+this.value+".jpg";
+                dynbuild(document.getElementById(which.value));
+                }
+            }    
+        }
+        
+        function moveIt(id,howMuch,toWhat){
+			var thingToMove=document.getElementById(id);
+			
+			if(parseInt(thingToMove.style.left)<toWhat){
+				thingToMove.style.left=parseInt(thingToMove.style.left)+howMuch+'px';
+				setTimeout(function(){moveIt(id,howMuch,toWhat);},30);
+			}
+        }
+        function setCookie(displayName){
+            SetCookie('Cupcake',displayName);
+        }
+        
+        function killForm(){
+            if(document.getElementsByTagName("form")[0])
+                    document.getElementsByTagName("form")[0].parentNode.removeChild(document.getElementsByTagName("form")[0]);
+        }
+            
+        function fade(formele) {
+            var op = 1;  
+            var timer = setInterval(function () {
+                if (op <= 0.1){
+                    clearInterval(timer);
+                formele.style.display = 'none';
+                }
+            formele.style.opacity = op;
+                formele.style.filter = 'alpha(opacity=' + op * 100 + ")";
+                op -= op * 0.1;
+            }, 50);
+        }
+  	</script>
+    
+<body onload = "dynbuild('init');">
+    <h1>The Cupcake Passion</h1>
+    <p>Customize your Cupcake from a list of lipsmacking options available on our menu.</p>
+    <div id= "ImageHolder" style="position:absolute; bottom:150px; right:350px">
+        <img src="../images/c1.png"; id="ImagesP">
+    </div>
+    <div id= "Select" style="position:relative; top:8px; left:0px;">
+    </div>    
+</body>
+</html>
